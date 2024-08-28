@@ -42,6 +42,11 @@ public class MessagingrabbitmqApplication {
 		return container;
 	}
 
+	@Bean
+	MessageListenerAdapter listenerAdapter(Receiver receiver) {
+		return new MessageListenerAdapter(receiver, "receiveMessage");
+	}
+
 	public static void main(String[] args) throws InterruptedException {
 		SpringApplication.run(MessagingrabbitmqApplication.class, args).close();
 	}
